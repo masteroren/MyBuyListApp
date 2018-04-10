@@ -2,16 +2,21 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 import { RecipeComponet } from "./core/recipe/recipe.component";
+import { RecipesComponent } from "./core/recipes/recipes.component";
 
 const routes: Routes = [
     { 
         path: "", 
-        redirectTo: "/recipe", 
+        redirectTo: "/recipes", 
         pathMatch: "full" 
     },
     { 
-        path: "recipe", 
+        path: "recipe/:id", 
         component: RecipeComponet 
+    },
+    { 
+        path: "recipes", 
+        component: RecipesComponent 
     }
 ];
 

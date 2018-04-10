@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { DataService } from "../../shared/services/data.service";
 import { Subscription } from "rxjs/Subscription";
@@ -13,24 +14,26 @@ import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view
 })
 export class RecipeComponet implements OnInit, OnDestroy {
 
-    private subs: Subscription[] = [];
+    private sub: Subscription;
+
     public recipe: IRecipe = {
         RecipeId: null,
         RecipeName: null
     };
 
-    constructor(private dataService: DataService) {
-
+    constructor(
+        private dataService: DataService, 
+        private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.subs.push(this.dataService.getRecipe(146).subscribe((recipe: IRecipe) => {
+        this.sub = this.dataService.getRecipe(this.activatedRoute.snapshot.params['id']).subscribe((recipe: IRecipe) => {
             this.recipe = recipe;
-        }));
+        });
     }
 
     ngOnDestroy() {
-        this.subs.forEach(sub => sub.unsubscribe());
+        this.sub.unsubscribe();
     }
 
 }

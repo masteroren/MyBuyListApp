@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { RecipeModule } from "./core/recipe/recipe.module";
 import { DataService } from "./shared/services/data.service";
+import { RecipesModule } from "./core/recipes/recipes.module";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -21,7 +22,8 @@ import { DataService } from "./shared/services/data.service";
         NativeScriptModule,
         NativeScriptHttpClientModule,
         AppRoutingModule,
-        RecipeModule
+        RecipeModule,
+        RecipesModule
     ],
     declarations: [
         AppComponent
