@@ -1,0 +1,7 @@
+<StackLayout class="recipes">
+    <ListView [items]="recipes | async" (itemTap)="onTapRecipe($event)">
+        <ng-template let-recipe="item">
+            <recipes-item [recipe]="recipe"></recipes-item>
+        </ng-template>
+    </ListView>
+</StackLayout>

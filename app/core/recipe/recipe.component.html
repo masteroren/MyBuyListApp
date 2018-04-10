@@ -1,0 +1,14 @@
+<StackLayout>
+    <Label [text]="recipe.RecipeName"></Label>
+
+    <TabView selectedIndex="1">
+        <StackLayout *tabItem="{title: 'אופן ההכנה'}">
+            <TextView [text]="recipe.PreparationMethod" [editable]="false"></TextView>
+        </StackLayout>
+        <StackLayout *tabItem="{title: 'מצרכים'}" margin="15">
+            <StackLayout *ngFor="let r of this.recipe.Ingrediants" marginRight="5" marginTop="5">
+                <Label text="{{r.Quantity}} {{r.Measure}} {{r.Name}}"></Label>
+            </StackLayout>
+        </StackLayout>
+    </TabView>
+</StackLayout>
